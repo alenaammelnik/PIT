@@ -1,0 +1,26 @@
+version: '3'
+services:
+  whoami1:
+    image: containous/whoami
+    container_name: whoami1
+    environment:
+      - VIRTUAL_HOST=whoami1.alenamelnikova.ddns.net
+      - LETSENCRYPT_HOST=whoami1.alenamelnikova.ddns.net
+      - LETSENCRYPT_EMAIL=alyona.melnikova17@gmail.com
+    networks:
+      - nginx-proxy
+
+  whoami2:
+    image: containous/whoami
+    container_name: whoami2
+    environment:
+      - VIRTUAL_HOST=whoami2.alenamelnikova.ddns.net
+      - LETSENCRYPT_HOST=whoami2.alenamelnikova.ddns.net
+      - LETSENCRYPT_EMAIL=alyona.melnikova17@gmail.com
+    networks:
+      - nginx-proxy
+
+networks:
+  nginx-proxy:
+    external:
+      name: nginx-proxy
